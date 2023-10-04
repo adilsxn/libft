@@ -26,7 +26,7 @@ RM       = rm -rf
 
 all:	$(NAME)
 
-${OBJ_DIR}/%.o: src/%.c | DIRECTORIES
+${OBJ_DIR}/%.o: src/%.c | $(OBJ_DIR)
 		@${CC} -c ${CFLAGS} $< -o $@ -I ${INCS}
 
 $(NAME): $(OBJS) $(OBJ_DIR)
@@ -34,7 +34,7 @@ $(NAME): $(OBJS) $(OBJ_DIR)
 	@ranlib $(NAME)
 	@echo "Libft compiled"
 
-DIRECTORIES:
+$(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
 clean:
